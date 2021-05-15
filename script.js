@@ -44,7 +44,12 @@ c.addEventListener('click', () => {
 })
 submit.addEventListener('click', () => {
     guess = displayNum.innerText
-    checks()
+    if (checkRepeat(parseInt(guess))) {
+        alert("ALL DIGITS ARE UNIQUE")
+    }
+    else {
+        checks()
+    }
     displayNum.innerText = ""
 })
 
@@ -105,7 +110,7 @@ function checks() {
             reset()
         }
         if (count == numOfAttempts) {
-            alert("YOU DID NOT GUESS THE NUMBER IN THE GIVEN TRIES")
+            alert("YOU DID NOT GUESS THE NUMBER " + answer + " IN THE GIVEN TRIES")
             reset()
         }
     } else {
