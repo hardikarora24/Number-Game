@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <script src="script.js" defer></script>
+    <title>THE NUMBER GAME</title>
+</head>
+
+<body>
+    <div id="body1">
+        <div class="head">
+            <div class="heading">GUESS THE NUMBER</div>
+            <div class="desc">This is a simple number guessing game where the player has to guess a number in the given
+                number of tries.The player can select the number of digits in the unknown number and also choose how
+                many tries he wants for guessing.<br>
+                &#9733 ALL THE DIGITS IN THE UNKNOWN NUMBER ARE UNIQUE(i.e. te number cannot be of the form AABC)
+            </div>
+        </div>
+        <div class="start">
+            <div class="form">
+                <label class="no">Choose the number of digits :</label>
+                <select name="num" id="num">
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+                <br>
+                <label class="attempt">Number of attempts :</label>
+                <select name="numa" id="numa">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10" selected>10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                </select>
+                <br>
+            </div>
+            <button class="startbutton">Start Guessing</a></button>
+
+        </div>
+    </div>
+    <div id="body2">
+        <div class="head">
+            <div class="heading">GUESS THE NUMBER</div>
+        </div>
+        <div class="mainguess">
+            <table class="guesstable" id="guess-table">
+                <thead>
+                    <tr>
+                        <th>Your <br>Guess</th>
+                        <th>No. of <br>Correct <br>Digits</th>
+                        <th>No. of digits<br> on Correct<br> Position</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="try">
+                <div class="tried">
+                </div>
+                <button class="submit btn">SUBMIT</button>
+                <button class="digit btn">7</button>
+                <button class="digit btn">8</button>
+                <button class="digit btn">9</button>
+                <button class="digit btn">4</button>
+                <button class="digit btn">5</button>
+                <button class="digit btn">6</button>
+                <button class="digit btn">1</button>
+                <button class="digit btn">2</button>
+                <button class="digit btn">3</button>
+                <button class="c btn">C</button>
+                <button class="digit btn">0</button>
+                <button class="ac btn">AC</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
