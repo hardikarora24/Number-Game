@@ -68,8 +68,8 @@ function generate(x) {
 }
 function checkRepeat(number) {
     check = number.toString()
-    for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
+    for (let i = 0; i < numOfDigits; i++) {
+        for (let j = 0; j < numOfDigits; j++) {
             if (i != j && (check.charAt(i) == check.charAt(j))) {
                 return true
             }
