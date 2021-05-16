@@ -5,6 +5,7 @@ var count = 0
 var wantRepeat = 0
 var selectDigits = document.querySelector('#num')
 var selectAttempts = document.querySelector('#numa')
+var selectRepeat = document.querySelector('#repeat')
 
 selectDigits.addEventListener('change', () => {
     numOfDigits = selectDigits.options[selectDigits.selectedIndex].value
@@ -13,6 +14,10 @@ selectDigits.addEventListener('change', () => {
 selectAttempts.addEventListener('change', () => {
     numOfAttempts = selectAttempts.options[selectAttempts.selectedIndex].value
 })
+selectRepeat.addEventListener('change', () => {
+    wantRepeat = selectRepeat.options[selectRepeat.selectedIndex].value
+})
+
 
 const startGame = document.querySelector(".startbutton")
 startGame.addEventListener('click', () => {
@@ -20,6 +25,7 @@ startGame.addEventListener('click', () => {
     console.log(answer, numOfDigits, numOfAttempts)
     document.getElementById('body1').style.setProperty('display', 'none')
     document.getElementById('body2').style.setProperty('display', 'block')
+    console.log(wantRepeat)
 })
 const digits = document.querySelectorAll('.digit')
 const c = document.querySelector('.c')
@@ -44,7 +50,7 @@ c.addEventListener('click', () => {
 })
 submit.addEventListener('click', () => {
     guess = displayNum.innerText
-    if (checkRepeat(parseInt(guess))) {
+    if (checkRepeat(parseInt(guess)) && wantRepeat === 0) {
         alert("ALL DIGITS ARE UNIQUE")
     }
     else {
@@ -57,19 +63,20 @@ submit.addEventListener('click', () => {
 
 
 function generate(x) {
-
+    console.log('hello')
     let max = Math.pow(10, x)
     var ans = Math.floor(Math.random() * max)
-    while (checkRepeat(ans) || ans < (max / 10) - 1) {
+    while ((wantRepeat == 0 && checkRepeat(ans)) || ans < (max / 10) - 1) {
         ans = Math.floor(Math.random() * max)
     }
+    console.log('no')
     return ans
 
 }
 function checkRepeat(number) {
-    check = number.toString()
-    for (let i = 0; i < numOfDigits; i++) {
-        for (let j = 0; j < numOfDigits; j++) {
+    let check = number.toString()
+    for (let i = 0; i < check.length; i++) {
+        for (let j = 0; j < check.length; j++) {
             if (i != j && (check.charAt(i) == check.charAt(j))) {
                 return true
             }
@@ -120,15 +127,34 @@ function checks() {
 function compare1(guess, ans) {
     let gs = guess.toString()
     let nu = ans.toString()
-    let a = 0
-    for (let i = 0; i < numOfDigits; i++) {
-        for (let j = 0; j < numOfDigits; j++) {
-            if (gs.charAt(i) == nu.charAt(j)) {
-                a++
-            }
+    //let a = 0
+    let b = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let c = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let count = 0
+    for (i = 0; i < numOfDigits; i++) {
+        b[parseInt(gs.charAt(i))]++
+        c[parseInt(nu.charAt(i))]++
+    }
+    /*     console.log(b)
+        console.log(c) */
+    for (i = 0; i < 10; i++) {
+        while (b[i] > 0 && c[i] > 0) {
+            b[i]--
+            c[i]--
+            count++
         }
     }
-    return a
+    /*     console.log(count)
+    
+        for (let i = 0; i < numOfDigits; i++) {
+            for (let j = 0; j < numOfDigits; j++) {
+                if (gs.charAt(i) == nu.charAt(j)) {
+                    a++
+                }
+            }
+        }
+        return a */
+    return count
 }
 function compare2(guess, ans) {
     let gs = guess.toString()
